@@ -32,7 +32,7 @@ namespace DownloadLibrary
             ClientContext ctxSite = GetSPContext(siteUrl,userName,password);
             string libraryname = libraryName;
             var folder = ctxSite.Web.GetFolderByServerRelativeUrl(libraryname);
-            //Modify this part fo change download location
+            //Modify this part to change download location (C: is the default)
             string pathString = string.Format(@"{0}{1}\", @"C:\", libraryname);
             if (!Directory.Exists(pathString))
                 System.IO.Directory.CreateDirectory(pathString);
@@ -44,7 +44,8 @@ namespace DownloadLibrary
             try
             {
                 clientContext.Load(mainFolder, k => k.Name, k => k.Files, k => k.Folders);
-                System.Net.ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
+                //Enable this line for bypass SSL certificate validation, for very old SP installation
+                //System.Net.ServicePointManager.ServerCertificateValidationCallback = (senderX, certificate, chain, sslPolicyErrors) => { return true; };
                 clientContext.ExecuteQuery();
                 foreach (var folder in mainFolder.Folders)
                 {
