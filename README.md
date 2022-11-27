@@ -4,4 +4,8 @@ Based on .NET 4.7.2 to work with legacy SP instances. Specially with 2010-2013 S
 
 Provided code works ONLY with OnPrem version because of the authentication based on Network Credential.
 
+## Next Steps
+* Make download location selectable programmatically
+* Make this work also with SharePoint Online
+
 
