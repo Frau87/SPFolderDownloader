@@ -7,5 +7,5 @@ Provided code works ONLY with OnPrem version because of the authentication based
 ## Next Steps
 * Make download location selectable programmatically
 * Make this work also with SharePoint Online
-
+* Basic Windows UI
 
